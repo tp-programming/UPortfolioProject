@@ -4,4 +4,29 @@
 
 <h1>Register Page</h1>
 
+    <div>
+    <form method="POST">
+                {{ form.csrf_token() }}
+                    <div>
+                        {{ form.email(class="input", placeholder="Email") }}
+                    </div>
+                        <br>
+                    <div>
+                        {{ form.password(class="input", placeholder="Password") }}
+                    </div>
+                        <br>
+                    <div>
+                        {{ form.confirm_password(class="input", placeholder="Confirm Password") }}
+                    </div>
+                        <br>
+                    <div>
+                        {{ form.firstname(class="input", placeholder="First Name") }}
+                    </div>
+                        <br>
+                    <div>
+                        {{ form.submit(class="button") }}
+                    </div>
+            </form>
+    </div>
+
 {% endblock %}

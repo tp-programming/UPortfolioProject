@@ -1,0 +1,5 @@
+Flask-SQLAlchemy==2.5.1
+Flask-WTF
+SQLAlchemy~=1.4.27
+mysql~=0.0.3
+mysql-connector-python~=8.0.27
