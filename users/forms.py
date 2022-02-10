@@ -7,3 +7,8 @@ class RegisterForm(FlaskForm):
     password = PasswordField()
     confirm_password = PasswordField()
     submit = SubmitField()
+
+class LoginForm(FlaskForm):
+    email = StringField()
+    password = PasswordField()
+    submit = SubmitField()

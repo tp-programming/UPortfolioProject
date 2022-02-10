@@ -3,5 +3,21 @@
 {% block content %}
 
 <h1>Login Page</h1>
+    <div>
+    <form method="POST">
+                {{ form.csrf_token() }}
+                <div>
+                    {{ form.email(class="input", placeholder="Email") }}
+                </div>
+                    <br>
+                <div>
+                    {{ form.password(class="input", placeholder="Password") }}
+                </div>
+                    <br>
+                <div>
+                    {{ form.submit(class="button") }}
+                </div>
+            </form>
+    </div>
 
 {% endblock %}
