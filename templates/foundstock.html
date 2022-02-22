@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Stock information</h1>
+    <div>
+    <h1>${{ output }} for every share of {{ company_name }}</h1>
+
+    <h2>Please select how much you would like to buy</h2>
+    </div>
+
+    <div>
+     <form method="POST">
+                {{ form.csrf_token() }}
+                <div>
+                    {{ form.stock_amount(class="input", placeholder="Amount of shares") }}
+                </div>
+                    <br>
+                <div>
+                    {{ form.submit(class="button") }}
+                </div>
+            </form>
+    </div>
+    </div>
+
+
+{% endblock %}

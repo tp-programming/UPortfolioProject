@@ -21,7 +21,7 @@ def register():
             flash('Email address already exists')
             return render_template('register.html', form=form)
 
-        new_user = User(id=max_id + 1, email=form.email.data, password=form.password.data, first_name=form.firstname.data,  role=user)
+        new_user = User(id=max_id + 1, email=form.email.data, password=form.password.data, first_name=form.firstname.data, role=user, money=10000)
 
         db.session.add(new_user)
         db.session.commit()

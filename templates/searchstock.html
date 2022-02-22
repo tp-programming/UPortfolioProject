@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Search Stock</h1>
+    <div>
+    <form method="POST">
+                {{ form.csrf_token() }}
+                <div>
+                    {{ form.ticker_symbol(class="input", placeholder="tickersymbol") }}
+                </div>
+                    <br>
+                <div>
+                    {{ form.submit(class="button") }}
+                </div>
+            </form>
+    </div>
+
+{% endblock %}

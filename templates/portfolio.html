@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Portfolio</h1>
+
+    <div>
+    {% for i in userinformation %}
+    <h2>Your current cash holdings: ${{ i.money }}</h2>
+    {% endfor %}
+
+    </div>
+
+    <div>
+<h2>Your stocks:</h2>
+    </div>
+
+    <div>
+
+    {% for i in transactions %}
+        <form method="POST">
+                {{ form.csrf_token() }}
+            <h2>Transaction ID {{ i.stock_id }}</h2>
+    <p>{{ i.amount }} shares of {{ i.stock_name }} at the price of {{ i.current_price }} with a profit of ${{ i.profit_loss }}
+
+    <div>
+    {{ form.amount(class="input", placeholder=i.stock_name) }}
+    </div>
+        <br>
+            <input value = {{ i.stock_id }} type="hidden" name="stockid">
+
+        <div>
+                    {{ form.sell(class="button") }}
+                </div>
+
+    </p>
+        </form>
+    {% endfor %}
+
+
+</div>
+
+
+{% endblock %}
