@@ -14,3 +14,6 @@ class SearchStock(FlaskForm):
 class BuyStock(FlaskForm):
     stock_amount = FloatField()
     submit = SubmitField()
+
+class Listofstocks(FlaskForm):
+    submit = SubmitField()

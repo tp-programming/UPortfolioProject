@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>List of the stocks: </h1>
+
+    {% for i in range(output| length) %}
+
+    <form method="POST">
+
+        {{ output2[i] }}  with the ticker symbol <input type="submit" value={{ output[i] }} name="whichstock"/>
+
+    </form>
+
+    {% endfor %}
+
+{% endblock %}

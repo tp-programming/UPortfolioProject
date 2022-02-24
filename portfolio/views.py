@@ -5,6 +5,7 @@ from app import db
 from models import Stock, User
 from portfolio.forms import PortfolioForm, SearchStock, BuyStock
 from portfolio.search import searchforstock
+import csv
 
 portfolio_blueprint = Blueprint('portfolio', __name__, template_folder='templates')
 
@@ -68,24 +69,82 @@ def portfolio():
 def searchstock():
     form = SearchStock()
     if form.validate_on_submit():
+
         output = searchforstock(f'{form.ticker_symbol.data}')
+
         if isinstance(output,str) == True:
-            return render_template('searchstock.html', form=form)
+
+            global listofstockss
+            listofstockss = []
+
+            global listofstockssname
+            listofstockssname = []
+
+            with open('nasdaq_screener.csv', newline='') as csvfile:
+                data = list(csv.reader(csvfile))
+
+            user_input = form.ticker_symbol.data
+
+
+            edited_user_input = user_input.lower()
+
+            for i in data:
+
+                string = ' '.join([str(item) for item in i])
+                lower_string = string.lower()
+                if edited_user_input in lower_string:
+                    print(i[1])
+                    print('The ticker symbol is: ' + i[0])
+                    listofstockss.append(i[0])
+                    listofstockssname.append(i[1])
+
+
+
+            print(listofstockss)
+            if listofstockss == []:
+                return render_template('searchstock.html', form=form)
+
+            return redirect(url_for('portfolio.listofstocks', listofstockss=listofstockss, listofstockssname=listofstockssname))
+
+
+
         global price
         price = float(output)
         global ticker
         ticker = form.ticker_symbol.data
 
-        return redirect(url_for('portfolio.foundstock'))
+        return redirect(url_for('portfolio.foundstock', ticker=ticker, price=price))
     return render_template('searchstock.html', form=form)
+
+@portfolio_blueprint.route('/listofstocks', methods=('GET', 'POST'))
+@login_required
+def listofstocks():
+    test = listofstockss
+    othertest = listofstockssname
+    if request.method == 'POST':
+        print(request.form.get('whichstock'))
+        whichstock = request.form.get('whichstock')
+        global ticker
+        ticker = whichstock
+        global price
+        price = float(searchforstock(f'{ticker}'))
+        return redirect(url_for('portfolio.foundstock', ticker=ticker, price=price))
+
+
+    return render_template('listofstocks.html', output=test, output2=othertest)
+
+
+
+
 
 @portfolio_blueprint.route('/foundstock', methods=('GET', 'POST'))
 @login_required
 def foundstock():
     form = BuyStock()
-    searchstock()
 
     ticker_symbol = yf.Ticker(f'{ticker}')
+
+    print("this is in foundstock", ticker_symbol)
 
     longName = 'longName'
 
