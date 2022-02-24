@@ -1,6 +1,7 @@
 from datetime import datetime
 from app import db
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -19,7 +20,7 @@ class User(db.Model, UserMixin):
     def __init__(self, id, email, password, first_name, role, money):
         self.id = id
         self.email = email
-        self.password = password
+        self.password = generate_password_hash(password, "sha256")
         self.first_name = first_name
         self.role = role
         self.money = money

@@ -7,6 +7,7 @@ from models import User
 from app import db, index
 from users.forms import RegisterForm, LoginForm
 from flask_login import current_user, login_required
+from werkzeug.security import check_password_hash
 
 users_blueprint = Blueprint('users', __name__, template_folder='templates')
 
@@ -37,8 +38,10 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
 
-        if not user or not user.password == form.password.data:
-            flash('Wrong details')
+        if not user or not check_password_hash(user.password, form.password.data):
+
+            flash('Please check your login details and try again')
+
             return render_template('login.html', form=form)
 
         login_user(user)

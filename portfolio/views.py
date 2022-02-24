@@ -42,10 +42,11 @@ def portfolio():
             if i.amount == form.amount.data:
                 totalprofit = i.amount * i.current_price
                 current_user.money = current_user.money+totalprofit
-                db.session.commit()
 
                 Stock.query.filter_by(stock_id=stockid).delete()
                 db.session.commit()
+                return render_template('index.html')
+
             if i.amount > form.amount.data:
                 totalprofit = form.amount.data * i.current_price
                 current_user.money = current_user.money+totalprofit
