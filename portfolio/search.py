@@ -1,15 +1,14 @@
 import yfinance as yf
 
+#This function uses yfinance to find the ticker symbol that is inputted.
+
 def searchforstock(input):
     tickers = [f'{input}']
     for ticker in tickers:
         ticker_yahoo = yf.Ticker(ticker)
         data = ticker_yahoo.history()
         try:
-            last_quote = (data.tail(1)['Close'].iloc[0])
-            pre_output = float(last_quote)
-            output = round(pre_output, 2)
-            final_output = output
+            final_output = round(float((data.tail(1)['Close'].iloc[0])), 2)
             return final_output
             break
         except:

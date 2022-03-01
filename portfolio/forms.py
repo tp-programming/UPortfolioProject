@@ -1,9 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, SubmitField
+from wtforms import StringField,  FloatField, SubmitField
+from wtforms.validators import InputRequired, NumberRange
 
+#Forms for everything to do with the portfolio section.
 
 class PortfolioForm(FlaskForm):
-    amount = FloatField()
+    amount = FloatField(validators=[InputRequired(), NumberRange(min=0, max=9999999, message='Please enter a positive amount')])
     sell = SubmitField()
 
 class SearchStock(FlaskForm):
@@ -12,8 +14,8 @@ class SearchStock(FlaskForm):
 
 
 class BuyStock(FlaskForm):
-    stock_amount = FloatField()
-    submit = SubmitField()
+    stock_amount = FloatField(validators=[InputRequired(), NumberRange(min=0, max=9999999, message='Please enter a positive amount')])
+    buy = SubmitField()
 
 class Listofstocks(FlaskForm):
     submit = SubmitField()

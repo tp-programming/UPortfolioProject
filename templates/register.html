@@ -10,18 +10,31 @@
                     <div>
                         {{ form.email(class="input", placeholder="Email") }}
                     </div>
+                    {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+
                         <br>
                     <div>
                         {{ form.password(class="input", placeholder="Password") }}
                     </div>
+                    {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
                         <br>
                     <div>
                         {{ form.confirm_password(class="input", placeholder="Confirm Password") }}
                     </div>
+                    {% for error in form.confirm_password.errors %}
+                            {{ error }}
+                        {% endfor %}
                         <br>
                     <div>
                         {{ form.firstname(class="input", placeholder="First Name") }}
                     </div>
+                        {% for error in form.firstname.errors %}
+                            {{ error }}
+                        {% endfor %}
                         <br>
                     <div>
                         {{ form.submit(class="button") }}

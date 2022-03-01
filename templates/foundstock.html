@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <h1>Your cash: {{ "{:.2f}".format(money) }}</h1>
+
 <h1>Stock information</h1>
     <div>
     <h1>${{ output }} for every share of {{ company_name }}</h1>
@@ -14,10 +16,14 @@
                 {{ form.csrf_token() }}
                 <div>
                     {{ form.stock_amount(class="input", placeholder="Amount of shares") }}
+                    {% for error in form.stock_amount.errors %}
+                            {{ error }}
+                        {% endfor %}
                 </div>
                     <br>
                 <div>
-                    {{ form.submit(class="button") }}
+                    {{ form.buy(class="button") }}
+
                 </div>
             </form>
     </div>
