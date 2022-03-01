@@ -2,17 +2,19 @@
 
 {% block content %}
 
-<h1>Portfolio</h1>
+<h1 class="main_header">{{ name }}'s Portfolio</h1>
 
     <div>
 
     <h2>Your current cash holdings: ${{ "{:.2f}".format(money) }}</h2>
 
+    <h2>Total asset worth: ${{ "{:.2f}".format(totalassets) }}</h2>
+
 
     </div>
 
     <div>
-<h2>Your stocks:</h2>
+<h2>Your transactions:</h2>
     </div>
 
     <div>
@@ -24,7 +26,7 @@
     <p>{{ i.amount }} shares of {{ i.stock_name }} at the price of {{ i.current_price }} with a profit of ${{ "{:.2f}".format(i.profit_loss) }}
 
     <div>
-    {{ form.amount(class="input", placeholder=i.stock_name) }}
+    {{ form.amount(class="input", placeholder="Enter amount") }}
             {% for error in form.amount.errors %}
                             {{ error }}
                         {% endfor %}

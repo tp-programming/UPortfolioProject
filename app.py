@@ -15,6 +15,10 @@ db = SQLAlchemy(app)
 def index():
     return render_template('index.html')
 
+@app.route('/howitworks')
+def howitworks():
+    return render_template('how_it_works.html')
+
 @app.errorhandler(403)
 def page_forbidden(error):
      return render_template('403.html'), 403

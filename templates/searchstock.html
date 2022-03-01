@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h1>Search Stock</h1>
+<h1 class="main_header">Search Stock</h1>
     <div>
     <form method="POST">
                 {{ form.csrf_token() }}
                 <div>
-                    {{ form.ticker_symbol(class="input", placeholder="tickersymbol") }}
+                    {{ form.ticker_symbol(class="input", placeholder="Enter the ticker symbol here") }}
                 </div>
                     <br>
                 <div>

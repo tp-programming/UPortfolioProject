@@ -17,16 +17,19 @@ def portfolio():
     form = PortfolioForm()
     transactions = Stock.query.filter_by(id=current_user.id).all()
 
+    profit_loss = 0
+
     #Update all the transactions current prices and therefore the profit amount.
     for i in transactions:
-
         new_price = searchforstock(f'{i.stock_symbol}')
         profit = (new_price-i.bought_price)*i.amount
         i.current_price=new_price
         i.profit_loss = profit
+        profit_loss = profit_loss+(new_price*i.amount)
         db.session.commit()
 
     money = current_user.money
+    totalassets = money+profit_loss
 
     if form.validate_on_submit():
 
@@ -57,7 +60,7 @@ def portfolio():
 
         return redirect(url_for('portfolio.portfolio'))
 
-    return render_template('portfolio.html', form=form, transactions=transactions, money=money)
+    return render_template('portfolio.html', form=form, transactions=transactions, money=money, name=current_user.first_name, totalassets=totalassets)
 
 
 @portfolio_blueprint.route('/searchstock', methods=('GET', 'POST'))

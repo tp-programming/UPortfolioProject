@@ -1,0 +1,181 @@
+body{
+  background-color: white;
+  margin-bottom: 7%;
+}
+
+h1{
+  color: #15172c;
+  padding: 40px;
+  text-align: center;
+  font-family: 'Arvo', serif;
+}
+
+.listofitems{
+  color: #15172c;
+  padding: 40px;
+  text-align: center;
+  font-family: 'Arvo', serif;
+  font-size: 120%
+}
+
+.bigpadding{
+  padding-top: 80px;
+}
+
+h2{
+  color: #15172c;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Arvo', serif;
+}
+
+h3{
+  color: #15172c;
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.main_header{
+  color: #15172c;
+  padding: 40px;
+  text-align: center;
+  font-family: 'Arvo', serif;
+  font-size: 400%;
+}
+
+p{
+  color: #15172c;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Arvo', serif;
+}
+
+
+.font2 {
+  font-family: 'Arvo', serif;
+  font-size: 150%;
+}
+
+
+
+
+nav{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #15172c;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+a.navbar-item{
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Arvo', serif;
+}
+
+a.navbar-item:hover:not(.active){
+  background-color: #5860b3;
+}
+
+img{
+  padding-top: 50px;
+  max-width: 30%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 7%;
+  background-color: #15172c;
+}
+
+.footer-text{
+  font-family: 'Arvo', serif;
+  font-size: 75%;
+  color: white;
+  vertical-align: bottom;
+  height: 7%;
+}
+
+input[type=text], select{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 0 auto;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'Arvo', serif;
+  font-size: 100%;
+}
+
+input[type=password], select{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 0 auto;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+ font-family: 'Arvo', serif;
+  font-size: 100%;
+}
+
+textarea, select{
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+  font-family: 'Arvo', serif;
+  font-size: 100%;
+}
+
+input[type=submit]{
+  width: fit-content;
+  background-color: #15172c;
+  color: white;
+  padding: 14px 20px;
+  margin: 0 auto;
+  display: flex;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Arvo', serif;
+  font-size: 100%;
+}
+
+
+
+td{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #008e46;
+  color: white;
+}

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1>List of the stocks: </h1>
+<h1 class="main_header">List of the stocks: </h1>
 
     {% for i in range(output| length) %}
 
-    <form method="POST">
+    <form method="POST" class="listofitems">
 
         {{ output2[i] }}  with the ticker symbol <input type="submit" value={{ output[i] }} name="whichstock"/>
 

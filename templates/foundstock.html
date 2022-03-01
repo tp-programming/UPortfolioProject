@@ -2,9 +2,8 @@
 
 {% block content %}
 
-    <h1>Your cash: {{ "{:.2f}".format(money) }}</h1>
+    <h1 class="bigpadding">Your cash: ${{ "{:.2f}".format(money) }}</h1>
 
-<h1>Stock information</h1>
     <div>
     <h1>${{ output }} for every share of {{ company_name }}</h1>
 
